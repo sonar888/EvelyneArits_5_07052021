@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.card-body {
+  background-color: pink;
+}
+
 /*!
  * Bootstrap v5.0.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
