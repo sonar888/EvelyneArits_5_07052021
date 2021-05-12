@@ -1,0 +1,22 @@
+{
+  "name": "p5_01_orinoco",
+  "version": "1.0.0",
+  "description": "First time implementing JS",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch scss/style.scss:./css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonar888/EvelyneArits_5_07052021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonar888/EvelyneArits_5_07052021/issues"
+  },
+  "homepage": "https://github.com/sonar888/EvelyneArits_5_07052021#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.0"
+  }
+}
