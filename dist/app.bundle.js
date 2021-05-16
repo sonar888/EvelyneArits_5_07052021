@@ -1,1 +1,0 @@
-!async function(){try{let o=await fetch("http://localhost:3000/api/cameras/"),a=await o.json();console.log(a)}catch(o){console.log("Error",o)}}();
