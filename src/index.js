@@ -19,7 +19,7 @@ function displayProducts(products) {
             <div class="card mb-2 mt-2">
                 <img src="${product.imageUrl}" alt="${product.name}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="./pages/produit.html" class="card-link stretched-link" id="${product._ID}">${product.name}</a></h5>
+                    <h5 class="card-title"><a href="./pages/produit.html?id=${product._id}" class="card-link stretched-link" id="${product._id}">${product.name}</a></h5>
                     <p class="card-text">${product.description}s</p>
                 </div>
             </div>
@@ -30,20 +30,8 @@ function displayProducts(products) {
     }
 }
 
+
+
 getProduct()
-
-let productID = document.getElementById("${product._ID}")
-
-productID.addEventListener('click', function createTheRedirection(productID) {
-
-
-} )
-
-
-// Une fonction qui lors du click sur le lien, récupère le product_id
-// Fetch avec le product_id
-// exporter la fonction fetch_id et importer dans 2e fichier
-
-// Test import/export
 
 

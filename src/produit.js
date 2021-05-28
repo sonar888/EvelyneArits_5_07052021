@@ -1,9 +1,18 @@
 
+function getID(ID){
+  let callID = new URLSearchParams(window.location.search);
+  return callID.get(ID);
+}
+
+
+const id = getID('id');
+console.log(id)
+
 
 
 async function getProduct() {
   try {
-    let content = await fetch('http://localhost:3000/api/cameras/5be1ed3f1c9d44000030b061');
+    let content = await fetch("http://localhost:3000/api/cameras/"+id);
     let response = await content.json();
     console.log(response);
     displayProduct(response);
@@ -25,7 +34,7 @@ function displayProduct(product) {
       <div class="card-text">
           <label for="select-lense">Lentilles</label>
           <select name="lenses" id="select-lense">
-              <option value="" id="option">Choisissez votre lentille</option>
+              <option value="" >Choisissez votre lentille</option>
               
           </select>
       </div>
@@ -38,26 +47,28 @@ function displayProduct(product) {
   </div>`
 
   row.innerHTML += template;
+  lenseChoice(product.lenses);
+
+
 }
 
 
+
 function lenseChoice(lenses) {
-  let option = document.getElementsByID("option");
+  let option = document.getElementById("select-lense");
   
-  for (let option of lenses){
-    option.innerHTML = `<option value="${product._id}">${product._id}</option>`
+  for (let lense of lenses){
+    option.innerHTML += `<option value="${lense}">${lense}</option>`
   }
 
 }
 
 getProduct()
-lenseChoice(lenses)
 
 
 
 
 
-// let firstOption = document.getElementById("option1");
-//   let secondOption = document.getElementById("option2");
-//   firstOption = [0]
-//   secondOption = [1]
+
+
+
