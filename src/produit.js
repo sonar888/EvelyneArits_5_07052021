@@ -25,7 +25,7 @@ function displayProduct(product) {
   let row = document.getElementById("SelectedProduct");
   let template = `
   <div class="col-12 col-lg-6">
-    <img src="${product.imageUrl}" alt="${product.name}" class="card-img">
+    <img src="${product.imageUrl}" alt="${product.name} ${product._id}" class="card-img">
   </div>
   <div class="col-12 col-lg-6 card">
     <div class="card-body">
@@ -38,7 +38,7 @@ function displayProduct(product) {
               
           </select>
       </div>
-      <button type="button" class="btn btn-primary"><a href="panier.html" class="card-link btn">Ajouter au panier</a></button>
+      <button type="button" onclick=${e => {nomdelafonctionpourajouteraupanier(e, product)}} class="btn btn-primary"><a href="panier.html" class="card-link btn" >Ajouter au panier</a></button>
     </div>
   </div>
   <div  class="card col-12">
@@ -65,10 +65,40 @@ function lenseChoice(lenses) {
 
 getProduct()
 
+// creer un tableua pour stocker les produit ajouter au panier
+// This array will host all the prodcuts added to the cart
+// Each time a product is added, the prodcut data is stored in the cart in the localstorage
+// in order to do this you have to create an objet which will contain a model of alll the product data
+
+// let productmODEL = {
+//   name:"",
+//   price: "",
+//   imageUrl: "",
+//   quantity: ""
+// }
 
 
+//don't forget to add quantity and lenseSelected later
+// this.lenseSelected = lenseSelected,
+// this.quantity = quantity
 
+class addedCamera {
+  constructor (name, price, _id ) { 
+    this.name = name;
+    this.price = price;
+    this._id = _id;
+    
+  }
+};
 
+let cameraAddedToBasket = new addedCamera(product.name," ${product.price}", "${product._id}")
+
+console.log(cameraAddedToBasket)
+
+function nomdelafonctionpourajouteraupanier(e,product ) {
+  e.preventDefault();
+  console.log(product)
+}
 
 
 

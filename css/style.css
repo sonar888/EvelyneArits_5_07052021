@@ -1,6 +1,47 @@
 @charset "UTF-8";
-.card-body {
-  background-color: pink;
+.border {
+  border: black 1px;
+  min-height: 300px;
+  width: 30%;
+}
+
+.modified {
+  display: flex;
+  flex-direction: row;
+  min-height: 100px;
+  width: 100%;
+  border: solid black 5px;
+  margin: 5px 0;
+}
+.modified img {
+  height: auto;
+  width: 30%;
+  object-fit: cover;
+}
+.modified .body {
+  width: 70%;
+}
+.modified .body .title {
+  text-align: left;
+  position: relative;
+}
+.modified .body #quantity {
+  position: absolute;
+  right: 0;
+  padding-right: 10px;
+}
+.modified .body #price {
+  position: absolute;
+  right: 0;
+  padding-right: 10px;
+  padding-top: 10px;
+  top: 30%;
+}
+.modified .body .text {
+  padding: 10px 5px 1px 5px;
+  text-align: justify;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /*!
