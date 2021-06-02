@@ -6,7 +6,7 @@ function getID(ID){
 
 
 const id = getID('id');
-console.log(id)
+console.log(id);
 
 
 
@@ -14,8 +14,9 @@ async function getProduct() {
   try {
     let content = await fetch("http://localhost:3000/api/cameras/"+id);
     let response = await content.json();
-    console.log(response);
+    // console.log(response);
     displayProduct(response);
+    return response;
   } catch (e) {
     console.log('Error', e);
   }
@@ -38,7 +39,7 @@ function displayProduct(product) {
               
           </select>
       </div>
-      <button type="button" onclick=${e => {nomdelafonctionpourajouteraupanier(e, product)}} class="btn btn-primary"><a href="panier.html" class="card-link btn" >Ajouter au panier</a></button>
+      <button type="button" id="btnAddToCart" class="btn btn-primary">Ajouter au panier</button>
     </div>
   </div>
   <div  class="card col-12">
@@ -55,7 +56,7 @@ function displayProduct(product) {
 
 
 function lenseChoice(lenses) {
-  let option = document.getElementById("select-lense");
+  var option = document.getElementById("select-lense");
   
   for (let lense of lenses){
     option.innerHTML += `<option value="${lense}">${lense}</option>`
@@ -63,7 +64,46 @@ function lenseChoice(lenses) {
 
 }
 
+function getSelectedLenseChoice() {
+  var options = document.getElementById("select-lense");
+  
+  for (let option of options){
+    if(option.selected) {
+      console.log(option.value);
+      return option.value;
+    }
+    
+  }
+}
+
 getProduct()
+  .then(function(product) {
+    let btnAddToCart = document.getElementById('btnAddToCart');
+
+    btnAddToCart.addEventListener('click', function () {
+      
+      console.log(product)
+    
+      class addedCamera {
+        constructor (name, price, _id, option ) { 
+          this.name = name;
+          this.price = price;
+          this._id = id;
+          this.option = option ;
+          
+        }
+      };
+      let cameraAddedToBasket = new addedCamera(product.name, product.price, id, getSelectedLenseChoice());
+  
+      console.log(cameraAddedToBasket);
+      
+      let cameraAddedToBasket_stringified = JSON.stringify(cameraAddedToBasket);
+      
+      localStorage.setItem("Item", cameraAddedToBasket_stringified);
+      
+      console.log(localStorage);
+    });
+  })
 
 // creer un tableua pour stocker les produit ajouter au panier
 // This array will host all the prodcuts added to the cart
@@ -82,23 +122,51 @@ getProduct()
 // this.lenseSelected = lenseSelected,
 // this.quantity = quantity
 
-class addedCamera {
-  constructor (name, price, _id ) { 
-    this.name = name;
-    this.price = price;
-    this._id = _id;
-    
-  }
-};
+  
+  
+  
 
-let cameraAddedToBasket = new addedCamera(product.name," ${product.price}", "${product._id}")
 
-console.log(cameraAddedToBasket)
 
-function nomdelafonctionpourajouteraupanier(e,product ) {
-  e.preventDefault();
-  console.log(product)
-}
+
+
+
+// class WebPage {
+//   constructor(url) {
+//     this.url = url;
+//     // start call
+//     this.responsePromise = axios(url);
+//   }
+
+//   async getContents() {
+//     // await for completion
+//     const response = await this.responsePromise;
+//     return response.data;
+//   }
+
+//   async calculateHash() {
+//     // await for completion
+//     const response = await this.responsePromise;
+//     return md5(response.data);
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function nomdelafonctionpourajouteraupanier(e,product ) {
+//   e.preventDefault();
+//   console.log(product)
+// }
 
 
 
