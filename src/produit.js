@@ -49,8 +49,6 @@ function displayProduct(product) {
 
   row.innerHTML += template;
   lenseChoice(product.lenses);
-
-
 }
 
 
@@ -76,97 +74,32 @@ function getSelectedLenseChoice() {
   }
 }
 
+
+
 getProduct()
   .then(function(product) {
     let btnAddToCart = document.getElementById('btnAddToCart');
-
     btnAddToCart.addEventListener('click', function () {
-      
-      console.log(product)
+      console.log(product)     
+        class addedCamera {
+          constructor (name, price, _id, option ) { 
+            this.name = name;
+            this.price = price;
+            this._id = id;
+            this.option = option ;
+          }
+        };
+        let cameraAddedToBasket = new addedCamera(product.name, product.price, id, getSelectedLenseChoice());
     
-      class addedCamera {
-        constructor (name, price, _id, option ) { 
-          this.name = name;
-          this.price = price;
-          this._id = id;
-          this.option = option ;
-          
-        }
-      };
-      let cameraAddedToBasket = new addedCamera(product.name, product.price, id, getSelectedLenseChoice());
+        console.log(cameraAddedToBasket);
+        
+        let cameraAddedToBasket_stringified = JSON.stringify(cameraAddedToBasket);
   
-      console.log(cameraAddedToBasket);
-      
-      let cameraAddedToBasket_stringified = JSON.stringify(cameraAddedToBasket);
-      
-      localStorage.setItem("Item", cameraAddedToBasket_stringified);
-      
-      console.log(localStorage);
-    });
-  })
-
-// creer un tableua pour stocker les produit ajouter au panier
-// This array will host all the prodcuts added to the cart
-// Each time a product is added, the prodcut data is stored in the cart in the localstorage
-// in order to do this you have to create an objet which will contain a model of alll the product data
-
-// let productmODEL = {
-//   name:"",
-//   price: "",
-//   imageUrl: "",
-//   quantity: ""
-// }
-
-
-//don't forget to add quantity and lenseSelected later
-// this.lenseSelected = lenseSelected,
-// this.quantity = quantity
-
-  
-  
-  
-
-
-
-
-
-
-// class WebPage {
-//   constructor(url) {
-//     this.url = url;
-//     // start call
-//     this.responsePromise = axios(url);
-//   }
-
-//   async getContents() {
-//     // await for completion
-//     const response = await this.responsePromise;
-//     return response.data;
-//   }
-
-//   async calculateHash() {
-//     // await for completion
-//     const response = await this.responsePromise;
-//     return md5(response.data);
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function nomdelafonctionpourajouteraupanier(e,product ) {
-//   e.preventDefault();
-//   console.log(product)
-// }
-
-
+        const storeCamera  = [];
+        storeCamera.push(cameraAddedToBasket_stringified);
+        localStorage.setItem(product.name, storeCamera);
+        
+        alert("Your item has been added to the basket") // need to change this: design check ccs?
+    })
+  });
 
