@@ -100,6 +100,7 @@ getProduct()
         localStorage.setItem(product.name, storeCamera);
         
         alert("Your item has been added to the basket") // need to change this: design check ccs?
+        console.log(localStorage)
     })
   });
 
