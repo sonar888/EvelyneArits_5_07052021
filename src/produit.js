@@ -97,7 +97,7 @@ getProduct()
   
         const storeCamera  = [];
         storeCamera.push(cameraAddedToBasket_stringified);
-        localStorage.setItem(product.name, storeCamera);
+        localStorage.setItem(id, storeCamera);
         
         alert("Your item has been added to the basket") // need to change this: design check ccs?
         console.log(localStorage)
