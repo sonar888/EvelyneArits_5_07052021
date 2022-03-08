@@ -152,48 +152,18 @@ function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
   
-  function closeForm() {
+function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 
+function sendToConfirmationPage () {
 
-
-
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-// var storageId = [];
-// var prices = [];
-
-// function showShoppingCart(){
     
-//     var myShoppingCart = document.getElementById('shoppingCart');
+    location.href = './confirmation_page.html';
+
+
+}
     
-//     for (var i = 0; i < myStorage.length; i++) {
-//         localStorage.getItem(localStorage.key(myStorage))
-//         var quotient = myStorage[i].price;
-//         var myPrice = quotient/1000;
-//         myPrice = myPrice.toFixed(2); 
-        
-        
 
-//     let template = `<div class="modified" id="demo${i}" >
-//                         <img src="" alt="img appareil foto" class="">
-//                         <div class="title">${myStorage[i].name} 
-//                             <span id="price">${myPrice}</span>
-//                             <span id="quantity">${myStorage[i].option}</span>
-//                         </div>
-//                         <div class="body">
-                           
-//                             <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-//                             </div> 
-//                             <button id=${myStorage[i].name} onclick="removeFromCart(${i})">Delete</button>  
-//                         </div>
-//                     </div>`
-        
-//         myShoppingCart.innerHTML += template;
-//         storageId.push( myStorage[i]["_id"]);
-//         prices.push(parseFloat(myPrice))
-//     }
 
-// }
 
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
