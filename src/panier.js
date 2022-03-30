@@ -121,28 +121,9 @@ function removeFromCart(value) {
     delete arrayIdAndPrice[value]
     console.log(arrayIdAndPrice)
     
-
-    
-    
-    // if (arrayIdAndPrice.length > 1 ) {
-    //     let key = arrayIdAndPrice[value]['ItemId'];
-    //     console.log(key)
-    //     arrayIdAndPrice.splice(value, 1)
-    //     // localStorage.removeItem(key)
-    //     //showTotalPrices(arrayIdAndPrice);
-    // } else {
-    //     arrayIdAndPrice = []
-    //     // localStorage.clear()
-    //     myTotal.innerHTML = "0.00"
-    // }
-    
-
-
 }
-
-
-
-// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    
+  
 
 
 
@@ -154,16 +135,119 @@ function openForm() {
   
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
-}
-
-function sendToConfirmationPage () {
 
     
-    location.href = './confirmation_page.html';
-
-
 }
+
+
+// Form validation
+
+// let submit = document.getElementById("submit-btn")
+// let isValid = false
+// let contact = new Object()
+
+// function processFrom() {
+//     if (isValid) {
+//         contact.fName = document.querySelector("#validationDefault01").value
+//         contact.lName = document.querySelector("#validationDefault02").value
+//         contact.address = document.querySelector("#validationDefault03").value
+//         contact.city = document.querySelector("#validationDefault05").value
+//         contact.email = document.querySelector("#validationDefault06").value
+//         console.log(contact)
+//     } else {
+//         console.log("false")
+//     }
     
+// }
+
+// submit.addEventListener("click", processFrom)
 
 
 
+
+
+
+
+// https://www.codegrepper.com/code-examples/html/form+validation+javascript+bootstrap
+
+
+// constructor (firstName, lastName, address, city, email ) { 
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.address = address;
+//     this.city = city;
+//     this.email = email
+// }
+
+
+// disable submit button until all fields are validated
+
+// function validateForm() {
+//     let firstName = document.forms["myForm"]["fname"].value;
+//     if (firstName == "") {
+//       alert("Name must be filled out");
+//       return false;
+//     }
+
+//     let lastName = document.forms["myForm"]["lname"].value;
+//     if (lastName == "") {
+//       alert("Name must be filled out");
+//       return false;
+//     }
+
+//     let address = document.forms["myForm"]["address"].value;
+//     if (address == "") {
+//       alert("Address must be filled out");
+//       return false;
+//     }
+
+//     let city = document.forms["myForm"]["city"].value;
+//     if (city == "") {
+//       alert("City must be filled out");
+//       return false;
+//     }
+
+//     let email = document.forms["myForm"]["email"].value;
+//     if (email == "") {
+//       alert("email must be filled out");
+//       return false;
+//     } 
+
+
+//     console.log(typeof firstName)
+
+//   }
+    
+//   function sendToConfirmationPage () {
+//     validateForm()
+//     console.log("form sent")
+    
+    
+// }
+
+
+
+
+
+// function buildContact() {
+
+
+
+    
+// }
+
+
+// var contact = {
+//     firstName: "John",
+//     lastName: "Doe",
+//     address: "Rue Fausse eau, 5, 5380",
+//     city: "Namur",
+//     email: "evelyne@gmail.com"
+//   };
+
+//   var product_id = ["5be1ed3f1c9d44000030b061", "5be9bc241c9d440000a730e7"]
+
+//   let order = {contact, product_id}
+
+//   let orderStr = JSON.stringify(order)
+//   console.log(orderStr)
