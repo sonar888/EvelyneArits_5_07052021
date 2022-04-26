@@ -82,14 +82,16 @@ getProduct()
     btnAddToCart.addEventListener('click', function () {
       console.log(product)     
         class addedCamera {
-          constructor (name, price, _id, option ) { 
+          constructor (name, price, _id, option, description, imageUrl) { 
             this.name = name;
             this.price = price;
             this._id = id;
-            this.option = option ;
+            this.option = option;
+            this.description = description;
+            this.imageUrl = imageUrl;
           }
         };
-        let cameraAddedToBasket = new addedCamera(product.name, product.price, id, getSelectedLenseChoice());
+        let cameraAddedToBasket = new addedCamera(product.name, product.price, id, getSelectedLenseChoice(), product.description, product.imageUrl);
     
         console.log(cameraAddedToBasket);
         

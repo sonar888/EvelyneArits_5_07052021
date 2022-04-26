@@ -27,31 +27,22 @@
 
     </head>
     <body>
-      <form>
-        <div class="form-row">
-          <div class="col-md-4 mb-3">
-            <label for="validationServer01">First name</label>
-            <input type="text" class="form-control" id="validationServer01" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please choose a username.
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="validationServer02">Last name</label>
-            <input type="text" class="form-control" id="validationServer02" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please choose a username.
-            </div>
-          </div>
+      <div class="modified" id="demo${i}" >
+        <img src="http://localhost:3000/images/vcam_3.jpg"  alt="img appareil foto" class="rounded float-start">
+        <div class="title">${myStorage[i].name} 
+            <span id="price">${myPrice}</span>
+            <span id="quantity">${myStorage[i].option}</span>
         </div>
-        <button class="btn btn-primary" type="submit" id="submit-btn" onclick="submitForm()">Submit form</button>
-      </form>
+        <div class="body">
+            <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div> 
+            <button type="button" class="btn btn-secondary" onclick="removeFromCart(${i})">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"></path>
+                <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"></path>
+              </svg>
+            </button>  
+        </div>
+      </div>  
 
       <script src="../src/app.js"></script>
     </body>

@@ -46,7 +46,9 @@
                                     <a class="nav-link" href="../index.html">Accueil</a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="panier.html">Panier</a>
+                                    <a class="nav-link" href="panier.html"> Panier <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket3" viewBox="0 0 16 16">
+                                      <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 .5 6h1.717L5.07 1.243a.5.5 0 0 1 .686-.172zM3.394 15l-1.48-6h-.97l1.525 6.426a.75.75 0 0 0 .729.574h9.606a.75.75 0 0 0 .73-.574L15.056 9h-.972l-1.479 6h-9.21z"/>
+                                    </svg></a>
                                 </li>
                             </ul>
                         </div>
@@ -56,64 +58,61 @@
         </header>
 
         <main class="container">
-            <div class="row">
-                <div class="col-12 col-lg-7 border">
-                    <div id="shoppingCart">
-                       
-                    </div>
-                   
+            <div id="ifEmpty">
+                
+            </div>
+
+            <div class="row" id="removeIfEmpty">
+                <div class="col-12 col-lg-7 " id="shoppingCart">
                 </div>
-                <div class="col-12 col-lg-4 offset-lg-1 border" id = "totalPurchase">
-                    recap prix
+                <div class="col-12 col-lg-4 offset-lg-1 border">
+                    <p>Le total de votre achat:<span id ="totalPurchase"></span></p> 
                     <button class="open-button" onclick="openForm()">Buy</button>
                 </div>
             </div>
 
-           <div class="form-popup" id="myForm">
-            <form class="form-container" name ="myForm" id="form-registration">
-
+           <div class="" id="orderForm">
+            <form class="" name ="myForm" id="form-registration"  >
+              <div class="form-row">
+                <div class="col-12">
+                  <label for="firstName">First name</label>
+                  <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
+                  <div class="invalid-feedback">
+                    Please enter a first name.
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="lastName">Last name</label>
+                  <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
+                  <div class="invalid-feedback">
+                    Please enter a last name.
+                  </div>
+                </div>
                 <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label for="validationDefault01">First name</label>
-                    <input name="fname" type="text" class="form-control" id="validationDefault01" placeholder="First name" value="" required>
+                  <div class="col-12">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                      </div>
                   </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationDefault02">Last name</label>
-                    <input name="lname" type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="" required>
+                  <div class="col-12">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="Address" placeholder="Address" required>
+                    <div class="invalid-feedback">
+                        Please enter an address.
+                      </div>
                   </div>
-                </div>
-
-                <div class="form">
-                  <div class="col-md-6 mb-3">
-                    <label for="validationDefault03">Address</label>
-                    <input name="address" type="text" class="form-control"  id="validationDefault03" placeholder="Adress Line 1" required>
-                    <input type="text" class="form-control" id="validationDefault04" placeholder="Adress Line 2">
+                  <div class="col-12">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="City" placeholder="City" required>
+                    <div class="invalid-feedback">
+                        Please enter a city.
+                      </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-3 mb-3">
-                      <label for="validationDefault04">City</label>
-                      <input type="text" class="form-control" name="city" id="validationDefault05" placeholder="City" required>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                      <label for="validationDefault05">email</label>
-                      <input type="email" class="form-control" name="email" id="validationDefault06" placeholder="Email" required>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                      <label class="form-check-label" for="invalidCheck2">
-                        I agree to the Terms and conditions
-                      </label>
-                    </div>
-                  </div>
-                  
-                </div>
-                
-                <button class="btn btn-primary" id="submit-btn" type="submit">
-                  Submit
-                </button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>              
+              </div>
+              <button class="btn btn-primary" type="submit" id="submit-btn">Submit form</button>
+              <button class="btn btn-danger" type="close" id="close-btn" onclick="closeForm()">close</button>
             </form>
            </div>
         </main>

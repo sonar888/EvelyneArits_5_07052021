@@ -6,9 +6,7 @@
   border: none;
   cursor: pointer;
   opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
+  
   width: 280px;
 }
 
@@ -19,7 +17,7 @@
 
 /* The popup form - hidden by default */
 .form-popup {
-    // display: none;
+    display: none;
     // position: fixed;
     bottom: 0;
     right: 15px;
@@ -80,26 +78,7 @@
 
   // returning confirmation message on sending payment
 
-  .grid {
-    height: 300px;
-    width: 600px;
-    border: solid 5px black;
-    display: block;
-    margin: auto;
-    position: relative;
-  }
 
-  .invoice {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: solid 1px black;
-    height: 100px;
-    width: 400px;
-    text-align: center;
-    align-content: center;
-  }
 
 
 
