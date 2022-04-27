@@ -179,6 +179,8 @@ function basketIsEmpty() {
     <a href="../index.html">Click here to go back to shopping</a>`
 
 }
+
+
     
   
 
@@ -196,7 +198,7 @@ function basketIsEmpty() {
 // }
 
 
-class contact { constructor (firstName, lastName, address, city, email) { 
+class person { constructor (firstName, lastName, address, city, email) { 
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -209,7 +211,12 @@ class contact { constructor (firstName, lastName, address, city, email) {
 
 var submit = document.getElementById("submit-btn");
 var form = document.getElementById('form-registration')
-submit.addEventListener("click", function(event){
+submit.addEventListener("click", verifyOrder)
+
+
+
+
+function verifyOrder (event) {
     event.preventDefault();
     let firstName = document.getElementById('firstName').value
     let lastName = document.getElementById('lastName').value
@@ -222,17 +229,77 @@ submit.addEventListener("click", function(event){
     if (!firstName || !lastName || !address || !city || (!email || !email.match(validRegex))) {
         console.log('failed')
         form.classList.add("was-validated")
-		
+        
     } else {
-        const person = new contact(firstName, lastName, address, city, email);
-        console.log(person)
-        sendOrder()
+        const contact = new person(firstName, lastName, address, city, email);
+        console.log(contact)
+        let myOrder = {contact, products}
+        let order = JSON.stringify(myOrder)
+        
+
+        sendOrder(order)
 
     }
+}
+
+async function sendOrder(data){
+
+    try {
+        let content = await fetch('http://localhost:3000/api/cameras/order', {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+
+        let response = await content.json();
+        console.log(response)
+        displayOrderReference(response)
+        return response;
+
+    } catch (e) {
+        console.log('Error', e);
+      }
+   
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("POST", 'http://localhost:3000/api/cameras/order');   
+        // xhr.setRequestHeader("Accept", "application/json");
+        // xhr.setRequestHeader("Content-Type", "application/json");        
+        // xhr.onload = () => console.log(xhr.responseText);
+        // xhr.send(data);
+                
+}
+
+function displayOrderReference(order){
+    console.log ('this is my order id' + ' ' + order.orderId)
+
+    let orderDisplay = document.getElementById('yourOrder')
+
+    let template = `
+    <div>  
+                <div class="spinner-border text-secondary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <div class="card-body">
+                      Thank you for your purchase. </br> Your order id is: ${order.orderId}
+                    </div>
+                  </div>
+            </div>
+    
+    `
+
+    orderDisplay.innerHTML = template
+    
 
 
-  
-});
+}
+
+
+
 
 
 
@@ -247,9 +314,30 @@ submit.addEventListener("click", function(event){
 // }
     
 
-function sendOrder () {
-    console.log ("order sent")
-}
+
+
+
+
+
+
+
+
+
+
+//     const Url = 'http://localhost:3000/api/cameras/order';
+//     const order = {contact, products};
+//     const othePram = {
+//     body: order,
+//     method:"POST"
+
+// }
+
+// fetch(Url, othePram)
+// .then(data => {return data.json()})
+// .then(res => {console.log(res)})
+// .catch(error =>{console.log(error)} )
+
+
 
 
 // var contact
@@ -280,34 +368,7 @@ function sendOrder () {
 
 
 
-//     const Url = 'http://localhost:3000/api/cameras/order';
-
-// const Data = 
-// contact: {
-//     firstName:"Evelyne",
-//     lastName:"Arits",
-//     email:"evelyne.arits162@gmail.com",
-//     Address:"31 Manor Avenue",
-//     City:"Cork"
-//  }
-//     products : ["5be1ef211c9d44000030b062", "5be9bc241c9d440000a730e7","5be1ed3f1c9d44000030b061"]
-    
-    
-
-
-// const othePram = {
-    
-//     body:Data,
-//     method:"POST"
-
-// }
-
-// fetch(Url, othePram)
-// .then(data => {return data.json()})
-// .then(res => {console.log(res)})
-// .catch(error =>{console.log(error)} )
-
-// }
+//     
 
 
 
