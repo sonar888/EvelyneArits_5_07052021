@@ -1,7 +1,8 @@
 var products = [];
 var myStorage = [];
 
-function allStorage() { //returns all the elements of the local storage without knowing what the key value is
+//Returns all the elements of the local storage without knowing what the key value is and adds them to an array myStorage
+function allStorage() { 
         keys = Object.keys(localStorage),
         i = keys.length;
 
@@ -11,12 +12,17 @@ function allStorage() { //returns all the elements of the local storage without 
     return myStorage;
 }
 
+
+// Parse the myStorage array so that we can use te values stored
 function parseArray (array) {
     for(var i = 0; i < array.length; i++) {
 
         array[i] = JSON.parse(array[i]);
     }
 }
+
+
+//Working with 3 arrays: myStorage, arrayIdAndPrice, products
 
 
 
@@ -35,10 +41,10 @@ class cameraIdAndPrice {
   
   
 
-
+//Displays the products added to the shopping cart
 function showShoppingCart() {  
 
-    if (myStorage.length > 0) {
+    if (myStorage.length > 0) { // if the cart is not empty
 
         for (var i = 0; i < myStorage.length; i++) {
             localStorage.getItem(localStorage.key(myStorage))
@@ -47,52 +53,19 @@ function showShoppingCart() {
             myPrice = myPrice.toFixed(2); 
     
     
-            let template = `<div class="card mb-3" id="demo${i}" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="http://localhost:3000/images/vcam_${i+1}.jpg" class="img-fluid rounded float-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">${myStorage[i].name}</h5>
-                  <p class="card-text">${myStorage[i].description}</p>
-                  <p class="card-text"><small class="text-muted">Lense: ${myStorage[i].option}</small></p>
-                  <p class="card-text"><small class="text-muted">Price: ${myPrice}</small></p>
-                  <button type="button" class="btn btn-secondary" onclick="removeFromCart(${i})"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"></path>
-                  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"></path>
-                  </svg></button>
-                </div>
-              </div>
-            </div>
-          </div>`
-            
-            
-    
-    //     let template = `<div class="modified" id="demo${i}" >
-    //                         <img src="http://localhost:3000/images/vcam_${i}.jpg"  alt="img appareil foto">
-    //                         <div class="title">${myStorage[i].name} 
-    //                             <span id="price">${myPrice}</span>
-    //                             <span id="quantity">${myStorage[i].option}</span>
-    //                         </div>
-    //                         <div class="body">
-                                
-    //                             <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    //                             </div> 
-    //                             <button type="button" class="btn btn-secondary" onclick="removeFromCart(${i})">
-    //                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-    //   <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"></path>
-    //   <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"></path>
-    // </svg></button>  
-    //                         </div>
-    //                     </div>`   
-            
+            let template = `<tr id="demo${i}"><td  scope="row"><div>
+            <img src="http://localhost:3000/images/vcam_${i+1}.jpg" class="img-fluid" alt="...">
+          </div></td>
+          <td class="col-3"><p class="text-align">${myStorage[i].name}</p></td>
+          <td class="col-3">${myStorage[i].option}</td>
+          <td class="col-2">${myPrice}</td>
+          <td class="col-1"> 
+            <button onclick="removeFromCart(${i})"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+              <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+            </svg></button></td></tr>`
+                        
             myShoppingCart.innerHTML += template;
-            // storageId.push( myStorage[i]["_id"]);
-            // prices.push(parseFloat(myPrice))
-    
-            
-            
+
             myPrice = parseFloat(myPrice)
             var newItem = new cameraIdAndPrice(myStorage[i]["_id"], myPrice);
             arrayIdAndPrice.push(newItem);
@@ -103,47 +76,31 @@ function showShoppingCart() {
             
     
         }
+
         sumPrices = sumPrices.toFixed(2)
         myTotal.innerHTML +=`<p>${sumPrices} € </p>`
 
 
-    } else {
+    } else { // if the cart is empty
 
-        basketIsEmpty()
+        basketIsEmpty() 
     }
-
-    
-
-    
-
 }
 
 
 
 
 
-
+//Call the functions to diplay the shopping cart elements in the DOM
 allStorage();
 parseArray(myStorage)
 showShoppingCart()
 
 
 
-// function showTotalPrices(prices) {
-//     for (let i = 0; i < prices.length; i++ ) {
-//         sumPrices += prices[i]["ItemPrice"];
-
-//         var result = Number(sumPrices).toFixed(2);
-//         myTotal.innerHTML= `<p>${result}<p/>`
-
-//     }
-// }
-
-
-
+//The function that removes elements from the shopping cart on click
 function removeFromCart(value) {
-    var myobj = document.getElementById("demo"+value);
-    myobj.remove();
+    document.querySelector('#demo'+value).remove();
 
     let key = arrayIdAndPrice[value]['ItemId'];
     localStorage.removeItem(key)
@@ -160,23 +117,30 @@ function removeFromCart(value) {
     delete arrayIdAndPrice[value]
     console.log(products)
 
-    if (myStorage.length === 0) {
+    if (localStorage.length === 0) {
         basketIsEmpty()
     }
-    // console.log(myStorage)
+
     
 }
+
+
+//Defines what to display on the page if the basket is empty
 
 function basketIsEmpty() {
     let empty = document.getElementById('removeIfEmpty');
     empty.parentNode.removeChild(empty)
 
     let orderForm = document.getElementById('orderForm');
-    myForm.parentNode.removeChild(myForm)
+    orderForm.parentNode.removeChild(orderForm)
 
     let emptyBasket = document.getElementById('ifEmpty');
-    emptyBasket.innerHTML = `<p>Your basket is empty</p>
-    <a href="../index.html">Click here to go back to shopping</a>`
+    emptyBasket.innerHTML = `<div id="emptyBasket">
+    <div class="col-6 offset-3 border py-5 text-center" >
+      <p>Your basket is empty</p>
+      <a href="../index.html">Click here to go back to shopping</a>
+    </div>
+  </div>`
 
 }
 
@@ -186,18 +150,7 @@ function basketIsEmpty() {
 
 //Form validation
 
-
-
-// function openForm() {
-//     document.getElementById("myForm").style.display = "block";
-// }
-  
-// function closeForm() {
-//     document.getElementById("myForm").style.display = "none";
-   
-// }
-
-
+//Build the contact info for sending the order
 class person { constructor (firstName, lastName, address, city, email) { 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -214,8 +167,18 @@ var form = document.getElementById('form-registration')
 submit.addEventListener("click", verifyOrder)
 
 
+function openForm() {
+    let myForm = document.getElementById("orderForm")
+    myForm.style.display = "block"
+}
+
+function closeForm() {
+    let myForm = document.getElementById("orderForm")
+    myForm.style.display = "none"
+}
 
 
+//Verify the values entered in the form
 function verifyOrder (event) {
     event.preventDefault();
     let firstName = document.getElementById('firstName').value
@@ -242,6 +205,8 @@ function verifyOrder (event) {
     }
 }
 
+
+//Send contact info and order details to the API
 async function sendOrder(data){
 
     try {
@@ -255,231 +220,25 @@ async function sendOrder(data){
 
         let response = await content.json();
         console.log(response)
-        displayOrderReference(response)
+        sendToOrderPage(response)
         return response;
 
     } catch (e) {
         console.log('Error', e);
       }
-   
-        // let xhr = new XMLHttpRequest();
-        // xhr.open("POST", 'http://localhost:3000/api/cameras/order');   
-        // xhr.setRequestHeader("Accept", "application/json");
-        // xhr.setRequestHeader("Content-Type", "application/json");        
-        // xhr.onload = () => console.log(xhr.responseText);
-        // xhr.send(data);
-                
 }
 
-function displayOrderReference(order){
+// Display the API response oder_id to the user
+
+function sendToOrderPage(order){
+    let confirmationId = order.orderId
     console.log ('this is my order id' + ' ' + order.orderId)
-
-    let orderDisplay = document.getElementById('yourOrder')
-
-    let template = `
-    <div>  
-                <div class="spinner-border text-secondary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            <div>
-                <div class="card">
-                    <div class="card-body">
-                      Thank you for your purchase. </br> Your order id is: ${order.orderId}
-                    </div>
-                  </div>
-            </div>
-    
-    `
-
-    orderDisplay.innerHTML = template
-    
-
-
+    localStorage.clear()
+    let url = `confirmation_page.html?id=${confirmationId}`
+    window.location.href = url
 }
 
 
 
 
 
-
-// function ValidateEmail() 
-// {
-//  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))
-//   {
-//     return (true)
-//   }
-//     alert("You have entered an invalid email address!")
-//     return (false)
-// }
-    
-
-
-
-
-
-
-
-
-
-
-
-//     const Url = 'http://localhost:3000/api/cameras/order';
-//     const order = {contact, products};
-//     const othePram = {
-//     body: order,
-//     method:"POST"
-
-// }
-
-// fetch(Url, othePram)
-// .then(data => {return data.json()})
-// .then(res => {console.log(res)})
-// .catch(error =>{console.log(error)} )
-
-
-
-
-// var contact
-
-// function retrieveData (event) {
-
-//     event.preventDefault();
-
-//     const data = new FormData(event.target);
-//     contact = Object.fromEntries(data.entries());
-//     console.log(contact);
-
-//     // createOrder()
-//     // sendOrder()
-// }
-
-
-
-// let order
-
-// function sendOrder () {
-    // let orderNat
-    // orderNat = contact+product_id;
-
-    // order = JSON.stringify(orderNat)
-
-    // console.log(order)  
-
-
-
-//     
-
-
-
-
-// const obj = {hello: 'world'};
-
-// const request = new Request('http://localhost:3000/api/cameras/order', {
-//   method: 'POST',
-//   body: JSON.stringify(obj)
-//  });
-
-// request.json().then(function(data) {
-//   // do something with the data sent in the request
-//   console.log(data)
-// });
-
-
-
-
-// To do
-
-// 1. Function to retrieve order
-// 2. create order + contact info 
-// 3. send through API 
-
-
-
-
-
-
-
-// https://www.codegrepper.com/code-examples/html/form+validation+javascript+bootstrap
-
-
-// constructor (firstName, lastName, address, city, email ) { 
-//     this.firstName = firstName;
-//     this.lastName = lastName;
-//     this.address = address;
-//     this.city = city;
-//     this.email = email
-// }
-
-
-// disable submit button until all fields are validated
-
-// function validateForm() {
-//     let firstName = document.forms["myForm"]["fname"].value;
-//     if (firstName == "") {
-//       alert("Name must be filled out");
-//       return false;
-//     }
-
-//     let lastName = document.forms["myForm"]["lname"].value;
-//     if (lastName == "") {
-//       alert("Name must be filled out");
-//       return false;
-//     }
-
-//     let address = document.forms["myForm"]["address"].value;
-//     if (address == "") {
-//       alert("Address must be filled out");
-//       return false;
-//     }
-
-//     let city = document.forms["myForm"]["city"].value;
-//     if (city == "") {
-//       alert("City must be filled out");
-//       return false;
-//     }
-
-//     let email = document.forms["myForm"]["email"].value;
-//     if (email == "") {
-//       alert("email must be filled out");
-//       return false;
-//     } 
-
-
-//     console.log(typeof firstName)
-
-//   }
-    
-//   function sendToConfirmationPage () {
-//     validateForm()
-//     console.log("form sent")
-    
-    
-// }
-
-
-
-
-
-// function buildContact() {
-
-
-
-    
-// }
-
-
-// var contact = {
-//     firstName: "John",
-//     lastName: "Doe",
-//     address: "Rue Fausse eau, 5, 5380",
-//     city: "Namur",
-//     email: "evelyne@gmail.com"
-//   };
-
-//   var product_id = ["5be1ed3f1c9d44000030b061", "5be9bc241c9d440000a730e7"]
-
-//   let order = {contact, product_id}
-
-//   let orderStr = JSON.stringify(order)
-//   console.log(orderStr)
