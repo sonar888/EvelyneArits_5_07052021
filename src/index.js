@@ -1,3 +1,16 @@
+//This function show the elements in storage with the badge in the basket
+function showElementsInStorage() {
+  let inStorage = document.getElementById('inStorage')
+  let elementsInStorage = localStorage.length
+  inStorage.innerHTML = ``
+  inStorage.innerHTML += `${elementsInStorage}`
+    console.log(elementsInStorage)
+  
+}
+
+showElementsInStorage()
+
+
 // This function should retrieve the cameras from the API
 async function getProduct() {
   try {

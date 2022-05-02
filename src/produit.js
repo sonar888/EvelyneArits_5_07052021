@@ -1,3 +1,8 @@
+//This function show the elements in storage with the badge in the basket
+
+showElementsInStorage()
+
+
 // Retrieve the selected product id to use in the functions
 
 function getID(ID){
@@ -115,9 +120,21 @@ getProduct()
         const storeCamera  = [];
         storeCamera.push(cameraAddedToBasket_stringified);
         localStorage.setItem(id, storeCamera);
+
+        showElementsInStorage()
+
         
-        alert("Le produit a été ajouté au panier") // need to change this: design check ccs?
         console.log(localStorage)
     })
   });
+
+
+function showElementsInStorage() {
+  let inStorage = document.getElementById('inStorage')
+  let elementsInStorage = localStorage.length
+  inStorage.innerHTML = ``
+  inStorage.innerHTML += `${elementsInStorage}`
+    console.log(elementsInStorage)
+  
+}
 

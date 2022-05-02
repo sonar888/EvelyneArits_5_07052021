@@ -1,7 +1,23 @@
+//This function show the elements in storage with the badge in the basket
+
+
+function showElementsInStorage() {
+    let inStorage = document.getElementById('inStorage')
+    let elementsInStorage = localStorage.length
+    inStorage.innerHTML = ``
+    inStorage.innerHTML += `${elementsInStorage}`
+      console.log(elementsInStorage)
+}
+
+showElementsInStorage()
+
+
+//Returns all the elements of the local storage without knowing what the key value is and adds them to an array myStorage
+
 var products = [];
 var myStorage = [];
 
-//Returns all the elements of the local storage without knowing what the key value is and adds them to an array myStorage
+
 function allStorage() { 
         keys = Object.keys(localStorage),
         i = keys.length;
@@ -117,6 +133,8 @@ function removeFromCart(value) {
     delete arrayIdAndPrice[value]
     console.log(products)
 
+    showElementsInStorage()
+
     if (localStorage.length === 0) {
         basketIsEmpty()
     }
@@ -137,8 +155,8 @@ function basketIsEmpty() {
     let emptyBasket = document.getElementById('ifEmpty');
     emptyBasket.innerHTML = `<div id="emptyBasket">
     <div class="col-6 offset-3 border py-5 text-center" >
-      <p>Your basket is empty</p>
-      <a href="../index.html">Click here to go back to shopping</a>
+      <p>Votre panier est vide</p>
+      <a href="../index.html">Cliquez-ici pour retourner sur le site</a>
     </div>
   </div>`
 
