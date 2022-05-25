@@ -12,7 +12,6 @@ function getID(ID){
 
 
 const id = getID('id');
-console.log(id);
 
 
 // This function should retrieve the selected camera's information from the API
@@ -21,7 +20,6 @@ async function getProduct() {
   try {
     let content = await fetch("http://localhost:3000/api/cameras/"+id);
     let response = await content.json();
-    // console.log(response);
     displayProduct(response); //We use the API response to display the selected product information
     return response;
   } catch (e) {
@@ -83,7 +81,6 @@ function getSelectedLenseChoice() {
   
   for (let option of options){
     if(option.selected) {
-      console.log(option.value);
       return option.value;
     }
     
@@ -96,7 +93,6 @@ getProduct()
   .then(function(product) {
     let btnAddToCart = document.getElementById('btnAddToCart');
     btnAddToCart.addEventListener('click', function () {
-      console.log(product)     
         class addedCamera {
           constructor (name, price, _id, option, description, imageUrl) { 
             this.name = name;
@@ -111,7 +107,6 @@ getProduct()
         //Build camera object with product name, price, id, selected option, description and image
         let cameraAddedToBasket = new addedCamera(product.name, product.price, id, getSelectedLenseChoice(), product.description, product.imageUrl);
     
-        console.log(cameraAddedToBasket);
         
         let cameraAddedToBasket_stringified = JSON.stringify(cameraAddedToBasket);
         
@@ -124,7 +119,6 @@ getProduct()
         showElementsInStorage()
 
         
-        console.log(localStorage)
     })
   });
 
@@ -134,7 +128,6 @@ function showElementsInStorage() {
   let elementsInStorage = localStorage.length
   inStorage.innerHTML = ``
   inStorage.innerHTML += `${elementsInStorage}`
-    console.log(elementsInStorage)
   
 }
 

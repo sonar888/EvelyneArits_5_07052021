@@ -4,19 +4,18 @@ function showElementsInStorage() {
   let elementsInStorage = localStorage.length
   inStorage.innerHTML = ``
   inStorage.innerHTML += `${elementsInStorage}`
-    console.log(elementsInStorage)
-  
 }
 
 showElementsInStorage()
 
 
 // This function should retrieve the cameras from the API
+const myURL = 'http://localhost:3000/api/cameras/'
+
 async function getProduct() {
   try {
-    let content = await fetch('http://localhost:3000/api/cameras/');
+    let content = await fetch(myURL);
     let response = await content.json();
-    console.log(response);
     displayProducts(response); //We use the API response to display the different products
   } catch (e) {
     console.log('Error', e);

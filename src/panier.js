@@ -6,7 +6,6 @@ function showElementsInStorage() {
     let elementsInStorage = localStorage.length
     inStorage.innerHTML = ``
     inStorage.innerHTML += `${elementsInStorage}`
-      console.log(elementsInStorage)
 }
 
 showElementsInStorage()
@@ -85,9 +84,7 @@ function showShoppingCart() {
             myPrice = parseFloat(myPrice)
             var newItem = new cameraIdAndPrice(myStorage[i]["_id"], myPrice);
             arrayIdAndPrice.push(newItem);
-            products.push(myStorage[i]["_id"])
-            console.log(products)
-    
+            products.push(myStorage[i]["_id"])    
             sumPrices += myPrice;
             
     
@@ -131,8 +128,6 @@ function removeFromCart(value) {
     myTotal.innerHTML= `${sumPrices}`
 
     delete arrayIdAndPrice[value]
-    console.log(products)
-
     showElementsInStorage()
 
     if (localStorage.length === 0) {
@@ -208,12 +203,10 @@ function verifyOrder (event) {
     var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     
     if (!firstName || !lastName || !address || !city || (!email || !email.match(validRegex))) {
-        console.log('failed')
         form.classList.add("was-validated")
         
     } else {
         const contact = new person(firstName, lastName, address, city, email);
-        console.log(contact)
         let myOrder = {contact, products}
         let order = JSON.stringify(myOrder)
         
@@ -237,7 +230,6 @@ async function sendOrder(data){
         });
 
         let response = await content.json();
-        console.log(response)
         sendToOrderPage(response)
         return response;
 
@@ -250,7 +242,6 @@ async function sendOrder(data){
 
 function sendToOrderPage(order){
     let confirmationId = order.orderId
-    console.log ('this is my order id' + ' ' + order.orderId)
     localStorage.clear()
     let url = `confirmation_page.html?id=${confirmationId}`
     window.location.href = url

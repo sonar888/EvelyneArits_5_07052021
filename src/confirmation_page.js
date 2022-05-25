@@ -1,3 +1,5 @@
+//Retrieve the order ID frm the URL
+
 function getID(ID){
     let callID = new URLSearchParams(window.location.search);
     return callID.get(ID);
@@ -5,8 +7,8 @@ function getID(ID){
   
   
   const orderID = getID('id');
-  console.log(orderID);
-
+  
+//Display the order ID to the customer
 
 function displayOrderConfirmation(order) {
 
