@@ -69,7 +69,7 @@ function showShoppingCart() {
     
     
             let template = `<tr id="demo${i}"><td  scope="row"><div>
-            <img src="http://localhost:3000/images/vcam_${i+1}.jpg" class="img-fluid" alt="...">
+            <img src="${myStorage[i].imageUrl}" class="img-fluid" alt="...">
           </div></td>
           <td class="col-3"><p class="text-align">${myStorage[i].name}</p></td>
           <td class="col-3">${myStorage[i].option}</td>
